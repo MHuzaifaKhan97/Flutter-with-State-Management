@@ -1,7 +1,9 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2636
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red70\green137\blue204;\red23\green23\blue23;\red202\green202\blue202;
+\red140\green211\blue254;\red67\green192\blue160;\red212\green214\blue154;}
+{\*\expandedcolortbl;;\cssrgb\c33725\c61176\c83922;\cssrgb\c11765\c11765\c11765;\cssrgb\c83137\c83137\c83137;
+\cssrgb\c61176\c86275\c99608;\cssrgb\c30588\c78824\c69020;\cssrgb\c86275\c86275\c66667;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
@@ -19,6 +21,30 @@ State for child\
 \
 INHERITED WIDGET:\
 \
-- Inherited Widget: Provider is a wrapper around inherited widget to make them easier to use and more useable.\
 - Inherited widget provide value down to the tree with nested passing into child.\
+\
+\
+PROVIDER:\
+- Provider is a wrapper around inherited widget to make them easier to use and more useable.\
+- provider is not update the IU, if we want to update UI we used ChangeNotifierProvider\
+\
+ChangeNotifierProvider: \
+- a model class with Change Notifier\
+- notifyLister()\
+\
+Consumer:\
+- consumer will rebuild any widget below it.\
+\
+\
+NOTE:\
+- if we don\'92t want to rebuild whole UI and just number so:\
+\pard\pardeftab720\partightenfactor0
+
+\f1 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 final\cf4 \strokec4  \cf5 \strokec5 counterNotifierNoChange\cf4 \strokec4  =\cb1 \
+\cb3         \cf6 \strokec6 Provider\cf4 \strokec4 .\cf7 \strokec7 of\cf4 \strokec4 <\cf6 \strokec6 CounterNotifier\cf4 \strokec4 >(\cf5 \strokec5 context\cf4 \strokec4 , \cf5 \strokec5 listen\cf4 \strokec4 : \cf2 \strokec2 false\cf4 \strokec4 );
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 - and used counterNotifierNoChange and UnWrap that widget from Consumer() where we don\'92t want to update.\
+\
 }
