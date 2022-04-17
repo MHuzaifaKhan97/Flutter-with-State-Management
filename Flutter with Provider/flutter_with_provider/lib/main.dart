@@ -5,6 +5,9 @@ import 'package:flutter_with_provider/future_provider/data_future.dart';
 import 'package:flutter_with_provider/future_provider/future_provider_example.dart';
 import 'package:flutter_with_provider/provider_widget/counter.dart';
 import 'package:flutter_with_provider/provider_widget/provider_example.dart';
+import 'package:flutter_with_provider/stream_provider/data.dart';
+import 'package:flutter_with_provider/stream_provider/data_stream.dart';
+import 'package:flutter_with_provider/stream_provider/stream_provider_example.dart';
 import 'package:provider/provider.dart';
 
 import 'future_provider/data.dart';
@@ -47,11 +50,20 @@ class MyApp extends StatelessWidget {
     // );
 
     // Future provider example
-    return FutureProvider<Data>(
-      create: (_) => loadData(),
-      initialData: Data('Initial Data'),
+    // return FutureProvider<Data>(
+    //   create: (_) => loadData(),
+    //   initialData: Data('Initial Data'),
+    //   child: MaterialApp(
+    //     home: FutureProviderExample(),
+    //   ),
+    // );
+
+    // Stream Provider Example
+    return StreamProvider<ModelStream>(
+      create: (_) => loadStream(),
+      initialData: ModelStream(number: 0),
       child: MaterialApp(
-        home: FutureProviderExample(),
+        home: StreamProviderExample(),
       ),
     );
   }
