@@ -3,6 +3,7 @@ import 'package:flutter_with_provider/change_notifier_widget/changenotifierprovi
 import 'package:flutter_with_provider/change_notifier_widget/counter_notifier.dart';
 import 'package:flutter_with_provider/future_provider/data_future.dart';
 import 'package:flutter_with_provider/future_provider/future_provider_example.dart';
+import 'package:flutter_with_provider/multi_provider/multi_provider_example.dart';
 import 'package:flutter_with_provider/provider_widget/counter.dart';
 import 'package:flutter_with_provider/provider_widget/provider_example.dart';
 import 'package:flutter_with_provider/stream_provider/data.dart';
@@ -59,11 +60,47 @@ class MyApp extends StatelessWidget {
     // );
 
     // Stream Provider Example
-    return StreamProvider<ModelStream>(
-      create: (_) => loadStream(),
-      initialData: ModelStream(number: 0),
+    // return StreamProvider<ModelStream>(
+    //   create: (_) => loadStream(),
+    //   initialData: ModelStream(number: 0),
+    //   child: MaterialApp(
+    //     home: StreamProviderExample(),
+    //   ),
+    // );
+
+    // Nested Providers
+    // return ChangeNotifierProvider<CounterNotifier>(
+    //   create: (_) => CounterNotifier(),
+    //   child: FutureProvider<Data>(
+    //     create: (_) => loadData(),
+    //     initialData: Data('Init Data'),
+    //     child: StreamProvider<ModelStream>(
+    //       create: (_) => loadStream(),
+    //       initialData: ModelStream(number: 0),
+    //       child: MaterialApp(
+    //         // home: ChangeNotifierProviderExample(),
+    //         // home: FutureProviderExample(),
+    //         home: StreamProviderExample(),
+    //       ),
+    //     ),
+    //   ),
+    // );
+
+    // Right way of multi provider is
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<CounterNotifier>(
+            create: (_) => CounterNotifier()),
+        FutureProvider<Data>(
+            create: (_) => loadData(), initialData: Data('Init data')),
+        StreamProvider(
+            create: (_) => loadStream(), initialData: ModelStream(number: 0))
+      ],
       child: MaterialApp(
-        home: StreamProviderExample(),
+        // home: ChangeNotifierProviderExample(),
+        // home: FutureProviderExample(),
+        // home: StreamProviderExample(),
+        home: MutiProviderExample(),
       ),
     );
   }
