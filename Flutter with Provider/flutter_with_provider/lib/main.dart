@@ -6,6 +6,9 @@ import 'package:flutter_with_provider/future_provider/future_provider_example.da
 import 'package:flutter_with_provider/multi_provider/multi_provider_example.dart';
 import 'package:flutter_with_provider/provider_widget/counter.dart';
 import 'package:flutter_with_provider/provider_widget/provider_example.dart';
+import 'package:flutter_with_provider/proxy_provider/credit_card.dart';
+import 'package:flutter_with_provider/proxy_provider/customer.dart';
+import 'package:flutter_with_provider/proxy_provider/proxy_provider_example.dart';
 import 'package:flutter_with_provider/stream_provider/data.dart';
 import 'package:flutter_with_provider/stream_provider/data_stream.dart';
 import 'package:flutter_with_provider/stream_provider/stream_provider_example.dart';
@@ -87,20 +90,35 @@ class MyApp extends StatelessWidget {
     // );
 
     // Right way of multi provider is
+    // return MultiProvider(
+    //   providers: [
+    //     ChangeNotifierProvider<CounterNotifier>(
+    //         create: (_) => CounterNotifier()),
+    //     FutureProvider<Data>(
+    //         create: (_) => loadData(), initialData: Data('Init data')),
+    //     StreamProvider(
+    //         create: (_) => loadStream(), initialData: ModelStream(number: 0))
+    //   ],
+    //   child: MaterialApp(
+    //     // home: ChangeNotifierProviderExample(),
+    //     // home: FutureProviderExample(),
+    //     // home: StreamProviderExample(),
+    //     home: MutiProviderExample(),
+    //   ),
+    // );
+
+    // Proxy provider example
+
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<CounterNotifier>(
-            create: (_) => CounterNotifier()),
-        FutureProvider<Data>(
-            create: (_) => loadData(), initialData: Data('Init data')),
-        StreamProvider(
-            create: (_) => loadStream(), initialData: ModelStream(number: 0))
+        ChangeNotifierProvider<CreditCard>(
+          create: (_) => CreditCard(),
+        ),
+        ProxyProvider<CreditCard, Customer>(
+            update: (_, creditCard, customer) => Customer(creditCard))
       ],
       child: MaterialApp(
-        // home: ChangeNotifierProviderExample(),
-        // home: FutureProviderExample(),
-        // home: StreamProviderExample(),
-        home: MutiProviderExample(),
+        home: ProxyProviderExample(),
       ),
     );
   }
