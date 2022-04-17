@@ -2,3 +2,8 @@
 
 ### - Inherited Widget
 ### - Provider
+### - ChangeNotifier Provider
+### - Future Provider
+### - Stream Provider
+### - Proxy Provider
+
