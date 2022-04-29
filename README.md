@@ -5,7 +5,7 @@
 ### - ChangeNotifier Provider
 ### - Future Provider
 ### - Stream Provider
-### - Proxy Provider  
+### - Proxy Provider   
 ### - TodoApp using Provider
 
  
