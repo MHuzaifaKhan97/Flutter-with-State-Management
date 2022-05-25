@@ -1,7 +1,7 @@
 # Flutter with State Management: 
 
 ### - Inherited Widget
-### - Provider
+### - Provider 
 ### - ChangeNotifier Provider
 ### - Future Provider
 ### - Stream Provider
